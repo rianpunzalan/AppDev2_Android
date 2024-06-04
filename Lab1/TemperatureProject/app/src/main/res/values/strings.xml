@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TemperatureProject</string>
+    <string name="TempConversionTextView">Temperature Conversion</string>
+    <string name="Temperature_editText"> </string>
+    <string name="ConvertedTemperature_textView"> </string>
+    <string name="Convert_Button">Convert Temperature</string>
+</resources>

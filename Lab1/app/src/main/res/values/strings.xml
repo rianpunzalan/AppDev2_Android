@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HelloWorldProject</string>
+    <string name="HelloTextView">Hello World! This is my First Mobile App</string>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CourseProject</string>
+    <string name="btnCalculateTotalFees">Total Course Fees</string>
+    <string name="btnNext">Next Course</string>
+    <string name="courseTextView"> </string>
+    <string name="courseTotalFeesTextView"> </string>
+
+</resources>

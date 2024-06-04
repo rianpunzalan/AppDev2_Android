@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MathOperationsProject</string>
+    <string name="MathOpTextView">Math Operations</string>
+    <string name="XeditText"> </string>
+    <string name="YeditText"> </string>
+    <string name="Addition_textView"> </string>
+    <string name="Subtraction_textView"> </string>
+    <string name="Multiplication_textView"> </string>
+    <string name="Division_textView"> </string>
+    <string name="Calculate_Button">Calculate</string>
+</resources>
