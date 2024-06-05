@@ -8,13 +8,15 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_f_id"
@@ -42,6 +44,18 @@
             android:layout_marginVertical="20dp"
             android:ems="10"
             android:text="@string/textView_f_fname" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_f_salary"
@@ -75,7 +89,6 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
@@ -86,7 +99,6 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
             android:text="@string/button_prev_faculty" />
 
         <Button
@@ -94,7 +106,6 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
             android:text="@string/button_next_faculty" />
     </LinearLayout>
 
@@ -102,10 +113,10 @@
         android:id="@+id/button_calculated_bonus"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:text="@string/button_calculated_bonus"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 

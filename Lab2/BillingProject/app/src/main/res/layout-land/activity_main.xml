@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="48dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/client_id_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:ems="10"
+            android:hint="Please Enter Client ID"
+            android:inputType="text"
+            android:text="@string/client_id_editText" />
+
+        <EditText
+            android:id="@+id/client_name_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:ems="10"
+            android:hint="Please Enter Client Name"
+            android:inputType="text"
+            android:text="@string/client_name_editText" />
+
+        <EditText
+            android:id="@+id/prd_Name_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:ems="10"
+            android:hint="Please Enter Prd Name"
+            android:inputType="text"
+            android:text="@string/prd_Name_editText" />
+
+        <EditText
+            android:id="@+id/prd_Price_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:ems="10"
+            android:hint="Please Enter Prd Price"
+            android:inputType="text"
+            android:text="@string/prd_Price_editText" />
+
+        <EditText
+            android:id="@+id/prd_Qty_editText"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:ems="10"
+            android:hint="Please Enter Prd Qty"
+            android:inputType="text"
+            android:text="@string/prd_Qty_editText" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="136dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/viewtotalbilling_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:text="@string/viewtotalbilling_textView"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/viewTotalBilling_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:text="@string/viewTotalBilling_textView"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/TotalInputBilling_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:text="@string/TotalInputBilling_Button" />
+
+        <Button
+            android:id="@+id/TotalRecordBilling_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="10dp"
+            android:text="@string/TotalRecordBilling_Button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="128dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/Prev_Billing_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:text="@string/Prev_Billing_Button" />
+
+        <Button
+            android:id="@+id/Next_Billing_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:text="@string/Prev_Billing_Button" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

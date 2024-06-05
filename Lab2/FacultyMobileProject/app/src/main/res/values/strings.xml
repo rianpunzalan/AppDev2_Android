@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FacultyMobileProject</string>
+    <string name="textView_f_id"> </string>
+    <string name="textView_f_lname"> </string>
+    <string name="textView_f_fname"> </string>
+    <string name="textView_f_salary"> </string>
+    <string name="textView_f_bonus"> </string>
+    <string name="textView_calcBonus"> </string>
+    <string name="button_prev_faculty">PREV FACULTY</string>
+    <string name="button_next_faculty">NEXT FACULTY</string>
+    <string name="button_calculated_bonus">CALCULATED BONUS</string>
+
 </resources>
