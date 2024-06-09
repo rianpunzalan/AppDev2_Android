@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">BillingProject</string>
+    <string name="client_id_editText"> </string>
+    <string name="client_name_editText"> </string>
+    <string name="prd_Name_editText"> </string>
+    <string name="prd_Price_editText"> </string>
+    <string name="prd_Qty_editText"> </string>
+    <string name="viewtotalbilling_textView">View Total Billing</string>
+    <string name="viewTotalBilling_textView"> </string>
+    <string name="TotalInputBilling_Button">TOTAL INPUT BILLING</string>
+    <string name="TotalRecordBilling_Button">TOTAL RECORD BILLING</string>
+    <string name="Prev_Billing_Button">PREV BILLING</string>
+    <string name="Next_Billing_Button">NEXT BILLING</string>
+
+</resources>
