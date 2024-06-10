@@ -5,60 +5,68 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".CourseActivity">
 
     <Button
-        android:id="@+id/btnCalculateTotalFees"
+        android:id="@+id/button_course_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:text="@string/btnCalculateTotalFees"
+        android:layout_marginVertical="50dp"
+        android:text="@string/button_course_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseTotalFeesTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_course_credits" />
 
-    <Button
-        android:id="@+id/btnNext"
+    <EditText
+        android:id="@+id/edit_course_no"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="413dp"
-        android:text="@string/btnNext"
+        android:layout_marginVertical="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edit_course_no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/courseTextView"
+    <EditText
+        android:id="@+id/edit_course_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="203dp"
-        android:text="@string/courseTextView"
+        android:layout_marginVertical="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edit_course_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_course_no" />
 
-    <TextView
-        android:id="@+id/courseTotalFeesTextView"
+    <EditText
+        android:id="@+id/edit_course_max_enrl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/courseTotalFeesTextView"
+        android:layout_marginVertical="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edit_course_max_enrl"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_course_name" />
 
-    <Button
-        android:id="@+id/button_course_detail"
+    <EditText
+        android:id="@+id/edit_course_credits"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/button_course_detail"
+        android:layout_marginVertical="50dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edit_course_credits"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNext" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_course_max_enrl" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,5 +4,10 @@
     <string name="btnNext">Next Course</string>
     <string name="courseTextView"> </string>
     <string name="courseTotalFeesTextView"> </string>
-
+    <string name="button_course_detail">Course Detail</string>
+    <string name="edit_course_no"> </string>
+    <string name="edit_course_name"> </string>
+    <string name="edit_course_max_enrl"> </string>
+    <string name="edit_course_credits"> </string>
+    <string name="button_course_update">Update Course</string>
 </resources>

@@ -13,11 +13,13 @@
         android:theme="@style/Theme.CourseProject"
         tools:targetApi="31">
         <activity
+            android:name=".CourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
+            android:configChanges="orientation"
             android:exported="true"
-            android:persistableMode="persistAcrossReboots"
-            android:configChanges="orientation">
-
+            android:persistableMode="persistAcrossReboots">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

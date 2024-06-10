@@ -2,6 +2,7 @@ package com.example.courseproject;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -26,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView courseTotalFeesTextView;
     private Button btnCalculateTotalFees;
     private Button btnNext;
-
+    private Button button_course_details;
     private int currentIndex = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,31 @@ public class MainActivity extends AppCompatActivity {
                 courseTextView.setText(courseString);
             }
         });
+
+        button_course_details = (Button) findViewById(R.id.button_course_detail);
+        button_course_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               //Single parameter way
+                /* Intent intent = new Intent(MainActivity.this, CourseActivity.class);
+                String courseID = CourseList[currentIndex].getcourse_no();
+                intent.putExtra(EXTRA_COURSE_NO, courseID);
+                startActivity(intent);*/
+
+                String courseID = CourseList[currentIndex].getcourse_no();
+                String courseName = CourseList[currentIndex].getcourse_name();
+                int courseMaxEnrl = CourseList[currentIndex].getmax_enrl();
+                int courseCredits = Course.credits;
+                Intent intent = CourseActivity.newIntent(MainActivity.this,
+                        courseID,
+                        courseName,
+                        courseMaxEnrl,
+                        courseCredits
+                );
+                startActivity(intent);
+            }
+        });
+
         if(savedInstanceState != null){
             currentIndex = savedInstanceState.getInt(KEY_INDEX);
             courseTotalFeesTextView = (TextView) findViewById(R.id.courseTotalFeesTextView);
@@ -97,23 +125,26 @@ public class MainActivity extends AppCompatActivity {
         savedInstanceState.putInt(KEY_INDEX, currentIndex);
         super.onSaveInstanceState(savedInstanceState);
     }
-/*
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
 
-        Log.d(TAG, "onSaveIntanceState() called");
-        System.out.println("store mCurrentIndex: "+currentIndex);
-        outState.putInt(KEY_INDEX, currentIndex);
-        super.onSaveInstanceState(outState,outPersistentState);
-    }
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
 
-        super.onRestoreInstanceState(savedInstanceState);
-
-        currentIndex = savedInstanceState.getInt(KEY_INDEX);
-    }*/
-
+    /*
+        ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+        new ActivityResultContracts.StartActivityForResult(),
+        new ActivityResultCallback<ActivityREsult>() {
+            @Override
+            public void onActivityResult(ActivityResult result){
+                if(result.getResultCode()!= Activity.RESULT_OK) //when the Activity fails
+                {
+                    return;
+                }
+                else
+                {
+                    Course courseUpdateInfo = CourseActivity.decodedMessageCourseUpdateResult(result.getData());
+                    all_courses[currentIndex].setCourse_no(courseUpdateInfo.getCourse_no());
+                }
+            }
+        }
+    */
     @Override
     public void onStart(){
         super.onStart();
