@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String KEY_INDEX = "index";
     private static final String TAG = "Course Project";
+    private static final String COURSE_ARRAY_LIST = "String Array List";
     private TextView courseTextView;
     private TextView courseTotalFeesTextView;
     private Button btnCalculateTotalFees;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Button button_course_details;
     private int currentIndex = 0;
 
+    private Course[] CourseList;
 
 
     @Override
@@ -45,17 +47,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
-        Course.credits = 3;
-        Course[] CourseList = {
-
-                new Course("MIS 101","Intro. to Info Systems",140,Course.credits),
-                new Course("MIS 301","Systems Analysis",35,Course.credits),
-                new Course("MIS 441","Database Management",12,Course.credits),
-                new Course("CS 155","Programming in C++",90,Course.credits),
-                new Course("MIS 451","Web-Based Systems",30,Course.credits),
-                new Course("MIS 551","Advanced Web",30,Course.credits),
-                new Course("MIS 651","Advanced Java",30,Course.credits)
+        int credits = 3;
+        CourseList = new Course[]{
+                new Course("MIS 101","Intro. to Info Systems",140,credits),
+                new Course("MIS 301","Systems Analysis",35,credits),
+                new Course("MIS 441","Database Management",12,credits),
+                new Course("CS 155","Programming in C++",90,credits),
+                new Course("MIS 451","Web-Based Systems",30,credits),
+                new Course("MIS 551","Advanced Web",30,credits),
+                new Course("MIS 651","Advanced Java",30,credits)
         };
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -102,10 +102,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = CourseActivity.newIntent(MainActivity.this,
                         courseID,
                         courseName,
-                        String.valueOf(courseMaxEnrl),
-                        String.valueOf(courseCredits)
+                        courseMaxEnrl,
+                        courseCredits
                 );
-                startActivity(intent);
+                //only used when sending data from parent MainActivity without expecting result from child activity
+                //startActivity(intent);
+                startActivityIntent.launch(intent);
             }
         });
 
@@ -114,40 +116,55 @@ public class MainActivity extends AppCompatActivity {
             courseTotalFeesTextView = (TextView) findViewById(R.id.courseTotalFeesTextView);
             String totalfeesString ="Total Course Fees is: " + CourseList[currentIndex].CalculateTotalFees();
             courseTotalFeesTextView.setText(totalfeesString);
-
+            
             courseTextView = (TextView) findViewById(R.id.courseTextView);
             String courseString = CourseList[currentIndex].getcourse_no()+ " | " + CourseList[currentIndex].getcourse_name();
             courseTextView.setText(courseString);
 
 
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-
-        Log.d(TAG, "onSaveIntanceState() called");
-        System.out.println("store mCurrentIndex: "+currentIndex);
-        savedInstanceState.putInt(KEY_INDEX, currentIndex);
-        super.onSaveInstanceState(savedInstanceState);
-    }
+    }//end of onCreate()
 
     ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>(){
                 @Override
-            public void onActivityResult(ActivityResult result){
-                if(result.getResultCode()!= Activity.RESULT_OK) //when the Activity fails
-                {
-                    return;
-                }
-                else
-                {
-                    Course courseUpdateInfo = CourseActivity.decodedMessageCourseUpdateResult(result.getData());
-                    CourseList[currentIndex].setCourse_no(courseUpdateInfo.getCourse_no());
-                }
-            }}
+                public void onActivityResult(ActivityResult result){
+                    if(result.getResultCode()!= Activity.RESULT_OK) //when the Activity fails
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Course courseUpdateInfo = CourseActivity.sendMessageCourseUpdateResult(result.getData());
+                        courseTextView.setText("Course Update: "+ courseUpdateInfo.getcourse_no() + " " + courseUpdateInfo.getcourse_name());
+                        courseTotalFeesTextView.setText("Updated Total Course Fees is: " + courseUpdateInfo.CalculateTotalFees()+"");
+
+                        CourseList[currentIndex].setcourse_no(courseUpdateInfo.getcourse_no());
+                        CourseList[currentIndex].setcourse_name(courseUpdateInfo.getcourse_name());
+                        CourseList[currentIndex].setmax_enrl(courseUpdateInfo.getmax_enrl());
+                        CourseList[currentIndex].credits =courseUpdateInfo.credits;
+
+                    }
+                }}
     );
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        Log.d(TAG, "onSaveIntanceState() called");
+        System.out.println("store mCurrentIndex: "+currentIndex);
+        savedInstanceState.putInt(KEY_INDEX, currentIndex);
+        ArrayList<String> CourseArrayList = new ArrayList<>();
+        CourseArrayList.add(CourseList[currentIndex].getcourse_no());
+        CourseArrayList.add(CourseList[currentIndex].getcourse_name());
+        CourseArrayList.add(String.valueOf(CourseList[currentIndex].getmax_enrl()));
+        CourseArrayList.add(String.valueOf(CourseList[currentIndex].credits));
+        savedInstanceState.putStringArrayList(COURSE_ARRAY_LIST,CourseArrayList);
+        super.onSaveInstanceState(savedInstanceState);
+
+    }
+
+
     /*
         ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
