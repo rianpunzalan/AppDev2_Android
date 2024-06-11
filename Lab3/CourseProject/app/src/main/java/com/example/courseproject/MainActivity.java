@@ -2,6 +2,8 @@ package com.example.courseproject;
 
 
 
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -12,6 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -96,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = CourseActivity.newIntent(MainActivity.this,
                         courseID,
                         courseName,
-                        courseMaxEnrl,
-                        courseCredits
+                        String.valueOf(courseMaxEnrl),
+                        String.valueOf(courseCredits)
                 );
                 startActivity(intent);
             }
@@ -126,7 +132,22 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
-
+    ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>(){
+                @Override
+            public void onActivityResult(ActivityResult result){
+                if(result.getResultCode()!= Activity.RESULT_OK) //when the Activity fails
+                {
+                    return;
+                }
+                else
+                {
+                    Course courseUpdateInfo = CourseActivity.decodedMessageCourseUpdateResult(result.getData());
+                    CourseList[currentIndex].setCourse_no(courseUpdateInfo.getCourse_no());
+                }
+            }}
+    );
     /*
         ActivityResultLauncher<Intent> startActivityIntent = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
@@ -145,6 +166,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     */
+
+
     @Override
     public void onStart(){
         super.onStart();

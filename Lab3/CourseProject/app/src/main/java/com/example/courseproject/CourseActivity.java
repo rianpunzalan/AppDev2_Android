@@ -30,7 +30,7 @@ public class CourseActivity extends AppCompatActivity {
     private static final String EXTRA_COURSE_MAXENRL = "com.example.courseproject.max_enrl";
     private static final String EXTRA_COURSE_CREDITS = "com.example.courseproject.credits";
 
-    public static Intent newIntent(Context packageContext, String courseID,String courseName,int courseMaxEnrl,int courseCredits)
+    public static Intent newIntent(Context packageContext, String courseID,String courseName,String courseMaxEnrl,String courseCredits)
     {
         Intent intent = new Intent(packageContext, CourseActivity.class);
         intent.putExtra(EXTRA_COURSE_NO, courseID);
