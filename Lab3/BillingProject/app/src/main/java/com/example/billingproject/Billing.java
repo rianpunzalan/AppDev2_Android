@@ -1,6 +1,11 @@
 package com.example.billingproject;
 
-public class Billing {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class Billing implements Parcelable {
     private int client_id;
     private String client_name;
     private String prd_Name;
@@ -26,6 +31,45 @@ public class Billing {
         this.prd_Price = prd_Price;
         this.prd_Qty = prd_Qty;
     }
+
+    public Billing (@NonNull Billing otherBilling){
+        this(otherBilling.client_id,otherBilling.client_name, otherBilling.prd_Name, otherBilling.prd_Price, otherBilling.prd_Qty);
+    }
+
+
+    protected Billing(Parcel in) {
+        client_id = in.readInt();
+        client_name = in.readString();
+        prd_Name = in.readString();
+        prd_Price = in.readDouble();
+        prd_Qty = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(client_id);
+        dest.writeString(client_name);
+        dest.writeString(prd_Name);
+        dest.writeDouble(prd_Price);
+        dest.writeInt(prd_Qty);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Billing> CREATOR = new Creator<Billing>() {
+        @Override
+        public Billing createFromParcel(Parcel in) {
+            return new Billing(in);
+        }
+
+        @Override
+        public Billing[] newArray(int size) {
+            return new Billing[size];
+        }
+    };
 
     public double CalculateBilling(){
         return (prd_Price* prd_Qty) + (prd_Price*prd_Qty)* Fed_Tax + (prd_Price*prd_Qty)* Prv_Tax;

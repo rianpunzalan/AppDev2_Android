@@ -6,4 +6,11 @@
     </style>
 
     <style name="Theme.FacultyMobileProject" parent="Base.Theme.FacultyMobileProject" />
+    <style name="Theme.FacultyMobileProject.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.FacultyMobileProject.AppBarOverlay"
+        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.FacultyMobileProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

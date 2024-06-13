@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                         CourseList[currentIndex].setcourse_name(courseUpdateInfo.getcourse_name());
                         CourseList[currentIndex].setmax_enrl(courseUpdateInfo.getmax_enrl());
                         CourseList[currentIndex].credits =courseUpdateInfo.credits;
+                        Toast.makeText(MainActivity.this, "Updates:" +  CourseList[currentIndex], Toast.LENGTH_SHORT).show();
 
                     }
                 }}

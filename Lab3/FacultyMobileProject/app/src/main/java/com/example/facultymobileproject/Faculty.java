@@ -1,8 +1,10 @@
 package com.example.facultymobileproject;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Faculty implements Comparable<Faculty>{
+public class Faculty implements Comparable<Faculty>, Parcelable {
     private String f_Id;
     private String f_Lname;
     private String f_Fname;
@@ -33,6 +35,40 @@ public class Faculty implements Comparable<Faculty>{
         this.f_bonusRate = otherFaculty.f_bonusRate;
     }
 
+
+    protected Faculty(Parcel in) {
+        f_Id = in.readString();
+        f_Lname = in.readString();
+        f_Fname = in.readString();
+        f_Salary = in.readDouble();
+        f_bonusRate = in.readDouble();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(f_Id);
+        dest.writeString(f_Lname);
+        dest.writeString(f_Fname);
+        dest.writeDouble(f_Salary);
+        dest.writeDouble(f_bonusRate);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Faculty> CREATOR = new Creator<Faculty>() {
+        @Override
+        public Faculty createFromParcel(Parcel in) {
+            return new Faculty(in);
+        }
+
+        @Override
+        public Faculty[] newArray(int size) {
+            return new Faculty[size];
+        }
+    };
 
     public String getF_Id() {
         return f_Id;

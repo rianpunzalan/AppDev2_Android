@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollIndicators="bottom"
+    tools:context=".FacultyViewHolder">
+
+    <FrameLayout
+        android:id="@+id/layout_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textview_f_bonus_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="10dp"
+            android:text="@string/textview_f_bonus_holder"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginEnd="192dp"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp">
+
+            <TextView
+                android:id="@+id/textview_f_id_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:layout_marginTop="120dp"
+                android:text="@string/textview_f_id_holder"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textview_f_lname_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:text="@string/textview_f_lname_holder"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textview_f_fname_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:text="@string/textview_f_fname_holder"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textview_f_salary_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="10dp"
+                android:text="@string/textview_f_salary_holder"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="478dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="167dp" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="1dp"
+        android:layout_height="166dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="1dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

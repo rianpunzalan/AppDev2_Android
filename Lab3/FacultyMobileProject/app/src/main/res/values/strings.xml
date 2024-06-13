@@ -9,5 +9,26 @@
     <string name="button_prev_faculty">PREV FACULTY</string>
     <string name="button_next_faculty">NEXT FACULTY</string>
     <string name="button_calculated_bonus">CALCULATED BONUS</string>
+    <string name="button_faculty_details">FACULTY DETAILS</string>
+    <string name="button_all_faculties">ALL FACULTIES</string>
+    <string name="button_update_faculty">UPDATE FACULTY/DISPLAY BONUS</string>
+    <string name="textview_calculated_bonus" />
+    <string name="edit_f_id" />
+    <string name="edit_f_lname" />
+    <string name="edit_f_fname" />
+    <string name="edit_f_salary" />
+    <string name="edit_f_bonus" />
+    <string name="textview_f_id_faculty">Faculty ID</string>
+    <string name="textview_f_lname_faculty">Faculty LName</string>
+    <string name="textview_f_fname_faculty">Faculty FName</string>
+    <string name="textview_f_salary_faculty">Salary</string>
+    <string name="textview_f_rate_faculty">Bonus Rate</string>
+    <string name="textview_f_bonus_faculty">Amount Bonus</string>
+    <string name="textview_f_id_holder">ID</string>
+    <string name="textview_f_lname_holder">lname</string>
+    <string name="textview_f_fname_holder">fname</string>
+    <string name="textview_f_salary_holder">salary</string>
+    <string name="textview_f_bonus_holder">bonus</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

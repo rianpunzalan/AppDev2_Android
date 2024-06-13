@@ -11,5 +11,17 @@
     <string name="TotalRecordBilling_Button">TOTAL RECORD BILLING</string>
     <string name="Prev_Billing_Button">PREV BILLING</string>
     <string name="Next_Billing_Button">NEXT BILLING</string>
+    <string name="textview_client_id">Client ID</string>
+    <string name="edit_client_id"/>
+    <string name="textview_client_name">Client Name</string>
+    <string name="edit_client_name"/>
+    <string name="textview_prd_name">Product Name</string>
+    <string name="edit_prd_name"/>
+    <string name="textview_prd_price">Product Price</string>
+    <string name="edit_prd_price" />
+    <string name="textview_prd_qty">Product Quantity</string>
+    <string name="edit_prd_qty" />
+    <string name="button_billing_update">Billing Update</string>
+    <string name="button_billing_details">BILLING DETAILS</string>
 
 </resources>

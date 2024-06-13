@@ -8,10 +8,61 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <Button
+            android:id="@+id/button_prev_faculty"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            android:text="@string/button_prev_faculty" />
+
+        <Button
+            android:id="@+id/button_next_faculty"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="10dp"
+            android:text="@string/button_next_faculty" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <Button
+            android:id="@+id/button_faculty_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_faculty_details" />
+
+        <Button
+            android:id="@+id/button_all_faculties"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/button_all_faculties" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.5"
@@ -21,27 +72,27 @@
         <TextView
             android:id="@+id/textView_f_id"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_f_id" />
 
         <TextView
             android:id="@+id/textView_f_lname"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_f_lname" />
 
         <TextView
             android:id="@+id/textView_f_fname"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_f_fname" />
     </LinearLayout>
@@ -50,7 +101,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -60,64 +111,29 @@
         <TextView
             android:id="@+id/textView_f_salary"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_f_salary" />
 
         <TextView
             android:id="@+id/textView_f_bonus"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_f_bonus" />
 
         <TextView
             android:id="@+id/textView_calcBonus"
             android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="5dp"
             android:ems="10"
             android:text="@string/textView_calcBonus" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:layout_editor_absoluteX="0dp">
-
-        <Button
-            android:id="@+id/button_prev_faculty"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="10dp"
-            android:text="@string/button_prev_faculty" />
-
-        <Button
-            android:id="@+id/button_next_faculty"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginHorizontal="10dp"
-            android:text="@string/button_next_faculty" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button_calculated_bonus"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/button_calculated_bonus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
