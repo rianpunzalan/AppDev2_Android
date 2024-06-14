@@ -30,7 +30,8 @@ public class AllFacultiesAdapter extends RecyclerView.Adapter<FacultyViewHolder>
                 = parent.getContext();
         LayoutInflater inflater
                 = LayoutInflater.from(context);
-
+        //inflate is same as setContentView
+        //fragments
         // Inflate the layout
 
         View facultyView
@@ -52,7 +53,6 @@ public class AllFacultiesAdapter extends RecyclerView.Adapter<FacultyViewHolder>
         viewHolder.textview_f_fname_holder.setText(Faculties.get(position).getF_Fname());
         viewHolder.textview_f_salary_holder.setText(String.valueOf(Faculties.get(position).getF_Salary()));
 
-
     }
 
     @Override
@@ -65,4 +65,6 @@ public class AllFacultiesAdapter extends RecyclerView.Adapter<FacultyViewHolder>
             RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
+    //you can put the FacultyHolder here as an inner class
 }
