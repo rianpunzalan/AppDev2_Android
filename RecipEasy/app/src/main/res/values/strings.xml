@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">RecipEasy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="find_bottom_nav_item"/>
+    <string name="bookmarks_bottom_nav_item"/>
+    <string name="my_recipes_bottom_nav_item"/>
+    <string name="profile_bottom_nav_item"/>
+    <string name="textview_find_fragment">Find</string>
+    <string name="textview_my_recipes_fragment">My Recipes</string>
+    <string name="textview_bookmarks_fragment">Bookmarks</string>
+    <string name="textview_profile_fragment">Profile</string>
+    <string name="radio_ingredient">Ingredient</string>
+    <string name="radio_preptime">Prep Time</string>
+    <string name="radio_cuisine">Cuisine</string>
+    <string name="radio_cooking_method">Cooking Method</string>
 </resources>
