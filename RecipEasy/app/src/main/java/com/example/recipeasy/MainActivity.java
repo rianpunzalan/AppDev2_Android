@@ -36,10 +36,11 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     }
 
-    FindFragment find_fragment = new FindFragment();
+    FindRecipeFragment find_recipe_fragment = new FindRecipeFragment();
     BookmarksFragment bookmarks_fragment = new BookmarksFragment();
     MyRecipesFragment my_recipes_fragment = new MyRecipesFragment();
     ProfileFragment profile_fragment = new ProfileFragment();
+    RecipeCardFragment recipe_card_fragment = new RecipeCardFragment();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
         if (item.getItemId()==R.id.find) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.flFragment, find_fragment)
+                    .replace(R.id.flFragment, find_recipe_fragment)
                     .commit();
             return true;
         }

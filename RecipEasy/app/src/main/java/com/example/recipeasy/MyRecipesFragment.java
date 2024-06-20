@@ -1,30 +1,45 @@
 package com.example.recipeasy;
 
+import android.app.Person;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Message;
 import android.os.StrictMode;
 import android.util.JsonReader;
+import android.util.JsonToken;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.google.gson.Gson;
+
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -90,63 +105,12 @@ public class MyRecipesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
-        URL url = null;
-        try {
-            url = new URL("https://www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-        HttpURLConnection urlConnection = null;
-        try {
-            urlConnection = (HttpURLConnection) url.openConnection();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            InputStream input = new BufferedInputStream(urlConnection.getInputStream());
-            textview_my_recipes_fragment= getView().findViewById(R.id.textview_my_recipes_fragment);
-            JsonReader reader = new JsonReader(new InputStreamReader(input, "UTF-8"));
-            String recipe="";
-            reader.beginObject();
-            reader.skipValue();
-            reader.beginArray();
-            reader.beginObject();
-            while(reader.hasNext()) {
-                recipe+=reader.nextString().toString();
-            }
-//            JSONObject json = new JSONObject();
-//            json.put(input.toString());
-//            json.toString();
-            BufferedReader buffered_reader = new BufferedReader(
-                    new InputStreamReader(input));
-            StringBuilder sb = new StringBuilder();
+        textview_my_recipes_fragment= getView().findViewById(R.id.textview_my_recipes_fragment);
 
-            String line = null;
-            try {
-                while ((line = buffered_reader.readLine()) != null) {
-                    Log.d(TAG,line);
-                    sb.append(line + "\n");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            //textview_my_recipes_fragment.setText(recipe);
-            textview_my_recipes_fragment.setText(new String(sb.toString()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            urlConnection.disconnect();
-        }
     }
+
+
 
 
 

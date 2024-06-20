@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/find"
-        android:title="@string/find_bottom_nav_item"
-        android:icon="@drawable/find_foreground"/>
+        android:icon="@drawable/find_foreground"
+        android:title="@string/find_bottom_nav_item" />
     <item
         android:id="@+id/my_recipes"
         android:title="@string/my_recipes_bottom_nav_item"

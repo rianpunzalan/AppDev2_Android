@@ -55,7 +55,7 @@
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle_recipe"
+        android:id="@+id/recycle_recipe_old"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

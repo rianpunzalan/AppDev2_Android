@@ -7,7 +7,7 @@
     tools:context=".RecipeCardFragment">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageview_strMealThumb"
         android:layout_width="0dp"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,15 +17,30 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textview_strMeal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="20dp"
-        android:text="Banana Bread Ice Cream Cake"
+        android:text="@string/textview_strMeal"
+        android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageview_strMealThumb" />
+
+    <TextView
+        android:id="@+id/textview_strIngredients"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:padding="20dp"
+        android:text="@string/textview_strIngredients"
+        android:textSize="25sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_strMealThumb" />
 </androidx.constraintlayout.widget.ConstraintLayout>
