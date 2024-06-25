@@ -30,16 +30,28 @@ public class Meal implements Serializable {
         this.strYoutube = "Youtube";
         this.strIngredient = new LinkedHashMap<>();
     }
-    public Meal(String idMeal, String strMeal, String strCategory, String strArea, String strInstructions, String strThumb, String strTags, String strYoutube, HashMap<String, String> strIngredient) {
+    public Meal(String idMeal, String strMeal, String strCategory, String strArea, String strInstructions, String strMealThumb, String strTags, String strYoutube, HashMap<String, String> strIngredient) {
         this.idMeal = idMeal;
         this.strMeal = strMeal;
         this.strCategory = strCategory;
         this.strArea = strArea;
         this.strInstructions = strInstructions;
-        this.strMealThumb = strThumb;
+        this.strMealThumb = strMealThumb;
         this.strTags = strTags;
         this.strYoutube = strYoutube;
         this.strIngredient = strIngredient;
+    }
+
+    public Meal(Meal tempMeal) {
+        this.idMeal = tempMeal.idMeal;
+        this.strMeal = tempMeal.strMeal;
+        this.strCategory = tempMeal.strCategory;
+        this.strArea = tempMeal.strArea;
+        this.strInstructions = tempMeal.strInstructions;
+        this.strMealThumb = tempMeal.strMealThumb;
+        this.strTags = tempMeal.strTags;
+        this.strYoutube = tempMeal.strYoutube;
+        this.strIngredient = tempMeal.strIngredient;
     }
 
     @Override

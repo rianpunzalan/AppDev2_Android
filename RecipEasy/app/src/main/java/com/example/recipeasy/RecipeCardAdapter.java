@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.JsonObject;
+
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,13 +41,13 @@ import java.util.concurrent.Executors;
 public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolder> implements Executor {
     ArrayList<Meal> Meals = new ArrayList<>();
     //private final AsyncListDiffer<ArrayList<Meal>> mDiffer = new AsyncListDiffer<ArrayList<Meal>>(this, DIFF_CALLBACK);
-
+    Boolean search_result;
     private static final String TAG = "RecipeCardAdapter";
     Context context;
 
     public RecipeCardAdapter(Context context) {
         this.context = context;
-        repopulateRecyclerView(10);
+        repopulateRecyclerView(2,"");
     }
 
     @NonNull
@@ -59,7 +61,6 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
                 = inflater
                 .inflate(R.layout.fragment_recipe_preview,
                         parent, false);
-
         return new RecipeCardViewHolder(recipeView);
     }
 
@@ -74,38 +75,14 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
                         viewHolder.imageview_strMealThumb.setImageBitmap(getImageBitmap(Meals.get(viewHolder.getBindingAdapterPosition()).getStrThumb()));
                     }
                 });
-
-
     }
-
-    /*public static final DiffUtil.ItemCallback<Meals> DIFF_CALLBACK = new DiffUtil.ItemCallback<Meals>() {
-        @Override
-        public boolean areItemsTheSame(
-                @NonNull Meal oldMeal, @NonNull Meal newMeal) {
-            // User properties may have changed if reloaded from the DB, but ID is fixed
-            return oldMeal.getIdMeal().equals(newMeal.getIdMeal());
-        }
-
-        @Override
-        public boolean areContentsTheSame(
-                @NonNull Meal oldMeal, @NonNull Meal newMeal) {
-            // NOTE: if you use equals, your object must properly override Object#equals()
-            // Incorrectly returning false here will result in too many animations.
-            return oldMeal.equals(newMeal);
-        }
-    };
-
-    public void submitList() {
-
-        mDiffer.submitList(randomRecipeGenerator(5));
-    }
-*/
-
 
     @Override
     public int getItemCount() {
         return Meals.size();
     }
+
+
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
@@ -113,18 +90,16 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
     }
 
 
+    public void RecipeGenerator(String url_API) {
+        boolean random_generate = false;
+        if (url_API.isEmpty()){
+            url_API = "https://www.themealdb.com/api/json/v1/1/random.php";
+            random_generate = true;
+        }
 
-
-    public void randomRecipeGenerator() {
-
-        ArrayList<Meal> meal_ArrayList = new ArrayList<>();
-
-                    String random_url_API = "https://www.themealdb.com/api/json/v1/1/random.php";
-                    //Log.d(TAG, random_url_API);
-
-                    URL url;
+            URL url;
                     try {
-                        url = new URL(random_url_API);
+                        url = new URL(url_API);
                     } catch (MalformedURLException e) {
                         throw new RuntimeException(e);
                     }
@@ -137,16 +112,18 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
                         throw new RuntimeException(e);
                     }
 
+                    ArrayList<Meal> meal_ArrayList = new ArrayList<>();
 
-                    Meal temp_meal;
                     try {
                         InputStream input = new BufferedInputStream(urlConnection.getInputStream());
-                        JsonReader reader = new JsonReader(new InputStreamReader(input, StandardCharsets.UTF_8));
+                        InputStreamReader inputStreamReader = new InputStreamReader(input, StandardCharsets.UTF_8);
+                        JsonReader reader = new JsonReader(inputStreamReader);
                         reader.beginObject();
                         String name = reader.nextName();
+
                         reader.beginArray();
-                        temp_meal = new Meal();
                         while (reader.hasNext()) {
+                            Meal temp_meal = new Meal();
                             reader.beginObject();
 
                             ArrayList<String> ingredient_name = new ArrayList<>();
@@ -189,25 +166,45 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
 
                             temp_meal.setStrIngredient(ingredients);
                             reader.endObject();
+                            ingredients.clear();
+                            meal_ArrayList.add(new Meal(temp_meal));
+                            //Log.d(TAG,temp_meal.toString());
+
+
+
                         }
+
                         reader.endArray();
                         reader.endObject();
 
-                        //meal_ArrayList.add(temp_meal);
+                        if(random_generate){
+                            Meals.addAll(meal_ArrayList);
+                        }
+                        else{
+                            Meals.clear();
+                            notifyItemRangeRemoved(0,getItemCount());
+                            //recipeCardAdapter.notifyDataSetChanged();
+                            Meals.addAll(meal_ArrayList);
+
+                            //Log.d(TAG,meal_ArrayList.toString());
+                            //Log.d(TAG,Meals.toString());
+                        }
+                        Log.d(TAG, String.valueOf(Meals.size()));
+
                         //textview_strMeal.setText(temp_meal.getStrMeal());
                         //textview_strIngredients.setText(temp_meal.getStrIngredient_formatted());
                         // imageview_strMealThumb.setImageBitmap(getImageBitmap(temp_meal.getStrThumb()));
-
+                        input.close();
+                        inputStreamReader.close();
+                        reader.close();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                         //textview_my_recipes_fragment.setText("No recipe found");
                     } finally {
+
                         urlConnection.disconnect();
                     }
 
-                    Meals.add(temp_meal);
-        //Log.d(TAG, String.valueOf(thread.isAlive()));
-       // StrictMode.setThreadPolicy(old_policy);
 
     }
     private Bitmap getImageBitmap(String url) {
@@ -235,26 +232,46 @@ public class RecipeCardAdapter  extends RecyclerView.Adapter<RecipeCardViewHolde
         return bm;
     }
 
-    public void repopulateRecyclerView(int count){
-        ArrayList<Runnable> jobs = new ArrayList<Runnable>();
-
-        for(int recipe_count=0;recipe_count<count; recipe_count++){
-            jobs.add(() -> randomRecipeGenerator());
-            notifyItemInserted(getItemCount()-1);
-        }
+    public void repopulateRecyclerView(int count,String url_string){
         ArrayList<Thread> threads = new ArrayList<>();
-        jobs.forEach(runnable -> {
-            threads.add(new Thread(runnable));
-            threads.get(threads.size()-1).start();
-        });
-
-        for (Thread thread : threads) {
+        int initialSize = getItemCount();
+        if(url_string.isEmpty()){
+            for(int recipe_count=0;recipe_count<count; recipe_count++){
+                threads.add(new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        RecipeGenerator("");
+                    }
+                }));
+                threads.get(threads.size()-1).start();
+            }
+            for (Thread thread : threads) {
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            notifyItemRangeInserted(initialSize, getItemCount()-1);
+            search_result = false;
+        }
+        else{
+            Thread search_thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    RecipeGenerator(url_string);
+                }
+            });
+            search_thread.start();
             try {
-                thread.join();
+                search_thread.join();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+            notifyItemRangeInserted(initialSize,getItemCount());
+            search_result=true;
         }
+
 
     }
 

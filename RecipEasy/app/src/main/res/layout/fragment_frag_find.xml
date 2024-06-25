@@ -8,10 +8,10 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </SearchView>
+        android:layout_height="wrap_content"/>
 
     <RadioGroup
         android:id="@+id/radio_group"
@@ -57,6 +57,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_recipe_old"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="800dp" />
 
 </LinearLayout>

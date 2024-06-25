@@ -36,16 +36,17 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
 
     }
 
-    FindRecipeFragment find_recipe_fragment = new FindRecipeFragment();
-    BookmarksFragment bookmarks_fragment = new BookmarksFragment();
-    MyRecipesFragment my_recipes_fragment = new MyRecipesFragment();
-    ProfileFragment profile_fragment = new ProfileFragment();
-    RecipeCardFragment recipe_card_fragment = new RecipeCardFragment();
+
+
+
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId()==R.id.find) {
+            FindRecipeFragment find_recipe_fragment = new FindRecipeFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flFragment, find_recipe_fragment)
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             return true;
         }
         else if (item.getItemId()==R.id.bookmarks) {
+            BookmarksFragment bookmarks_fragment = new BookmarksFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flFragment, bookmarks_fragment)
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
             return true;
         }
         else if (item.getItemId()==R.id.my_recipes) {
+            MyRecipesFragment my_recipes_fragment = new MyRecipesFragment();
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.flFragment, my_recipes_fragment)
@@ -67,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationBarView
                 return true;
         }
         else if (item.getItemId()==R.id.profile) {
+            ProfileFragment profile_fragment = new ProfileFragment();
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.flFragment, profile_fragment)

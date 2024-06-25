@@ -19,4 +19,6 @@
     <string name="textview_strInstructions" />
     <string name="textview_label_strIngredients">Ingredients</string>
     <string name="textview_label_strInstructions">Instructions</string>
+    <string name="radio_name">Name</string>
+    <string name="radio_category">Category</string>
 </resources>

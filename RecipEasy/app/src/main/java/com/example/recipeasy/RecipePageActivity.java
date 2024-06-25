@@ -96,7 +96,8 @@ public class RecipePageActivity extends AppCompatActivity implements Executor {
         Meal temp_meal;
         try {
             InputStream input = new BufferedInputStream(urlConnection.getInputStream());
-            JsonReader reader = new JsonReader(new InputStreamReader(input, StandardCharsets.UTF_8));
+            InputStreamReader inputStreamReader = new InputStreamReader(input, StandardCharsets.UTF_8);
+            JsonReader reader = new JsonReader(inputStreamReader);
             reader.beginObject();
             String name = reader.nextName();
             reader.beginArray();
@@ -147,6 +148,9 @@ public class RecipePageActivity extends AppCompatActivity implements Executor {
             }
             reader.endArray();
             reader.endObject();
+            input.close();
+            inputStreamReader.close();
+            reader.close();
 
 
             textview_strMeal.setText(temp_meal.getStrMeal());
